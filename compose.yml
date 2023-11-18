@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  evira:
+    image: prototux/evira:latest
+    container_name: evira
+    volumes:
+      - ./config.yml:/app/config.yml
+    restart: unless-stopped
