@@ -31,7 +31,7 @@ def get_openai_response(messages):
         'Content-Type': 'application/json'
     }
 
-    chat_messages = [] if config.get('context_add', False) else [{'role': config.get('context_type', 'system'), 'content': construct_context()}]
+    chat_messages = [] if config.get('context_skip', False) else [{'role': config.get('context_type', 'system'), 'content': construct_context()}]
     chat_messages += [{"role": "assistant" if msg.author == bot.user else "user", "content": msg.clean_content} for msg in messages]
 
     data = {
