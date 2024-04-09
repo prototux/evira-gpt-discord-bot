@@ -41,8 +41,11 @@ def get_openai_response(messages):
     }
 
     response = requests.post(f'{config["openai_api_url"]}/v1/chat/completions', headers=headers, json=data)
-    response_json = response.json()
-    return response_json['choices'][0]['message']['content'].strip()
+    if response.status_code == 200:
+        response_json = response.json()
+        return response_json['choices'][0]['message']['content'].strip()
+    else:
+        return config.get('error_msg', 'Sorry, there was an error generating the response')
 
 # Helper function to gather messages in the reply chain
 async def gather_reply_chain(message):

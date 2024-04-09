@@ -6,3 +6,4 @@ prefix: '!'
 context: "You are a happy, friendly, gentle, polite and sympathetic robot named 'Evira'. Avoid @mentions and mentioning your own name."
 languages: ['french', 'english']
 topics: ['programming']
+error_msg: 'Sorry!'
