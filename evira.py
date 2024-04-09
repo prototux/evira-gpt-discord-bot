@@ -69,7 +69,9 @@ async def on_message(message):
             reply_chain = await gather_reply_chain(message.reference.resolved)
 
         # Generate the AI response
-        ai_response = get_openai_response(reply_chain + [message])
+        async with message.channel.typing():
+            ai_response = get_openai_response(reply_chain + [message])
+
         try:
             await message.reply(ai_response)
         except:
